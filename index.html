@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MyBookVault</title>
+  </head>
+  <body>
+    <h1>MyBookVault 📚</h1>
+    <!-- creates user form to add book -->
+    <form id="book-form">
+      <input id="title" type="text" placeholder="Book title" required />
+      <input id="author" type="text" placeholder="Author" required />
+
+      <select id="status">
+        <option value="read">Read</option>
+        <option value="own">Own</option>
+        <option value="wishlist">Wishlist</option>
+      </select>
+
+      <button>Add book</button>
+    </form>
+
+    <script src="main.js"></script>
+  </body>
+</html>
