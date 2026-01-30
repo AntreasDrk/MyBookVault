@@ -11,6 +11,18 @@ const statusSelect = document.getElementById("status");
 
 const bookList = document.getElementById("book-list");
 
+// display added books to page
+function renderBooks(books) {
+  bookList.textContent = "";
+
+  books.forEach(function (book) {
+    let list = document.createElement("li");
+    list.innerHTML = `${book.title} - ${book.author} - ${book.status}`;
+    console.log(list);
+    bookList.appendChild(list);
+  });
+}
+
 // eventlistener that once the form is submited a book is added in the array books
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -23,15 +35,9 @@ form.addEventListener("submit", function (e) {
   };
 
   books.push(newBook);
+  renderBooks(books);
 
   console.log(books);
 
   form.reset();
 });
-
-// display added books to page
-const renderBooks = function (booksContainer) {
-  booksContainer.innerHTML = "";
-};
-
-renderBooks(bookList);
