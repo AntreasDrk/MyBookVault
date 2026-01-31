@@ -11,6 +11,14 @@ const statusSelect = document.getElementById("status");
 
 const bookList = document.getElementById("book-list");
 
+// stored books
+const storedBooks = JSON.parse(localStorage.getItem("books"));
+
+if (storedBooks) books.push(...storedBooks);
+
+// we call it here again to re-render the already existing books
+renderBooks(books);
+
 // display added books to page
 function renderBooks(books) {
   bookList.textContent = "";
@@ -34,10 +42,15 @@ form.addEventListener("submit", function (e) {
     status: statusSelect.value,
   };
 
+  // adds book into books array
   books.push(newBook);
+
+  // saves to local storage
+  localStorage.setItem("books", JSON.stringify(books));
+
+  // renders books into page
   renderBooks(books);
 
-  console.log(books);
-
+  // resets form
   form.reset();
 });
