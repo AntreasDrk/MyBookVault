@@ -9,7 +9,11 @@ const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const statusSelect = document.getElementById("status");
 
+// id of ul container
 const bookList = document.getElementById("book-list");
+
+// filter buttons
+const filterButtons = document.querySelectorAll("button[data-filter]");
 
 // stored books
 const storedBooks = JSON.parse(localStorage.getItem("books"));
@@ -53,4 +57,20 @@ form.addEventListener("submit", function (e) {
 
   // resets form
   form.reset();
+});
+
+// looping through the filter buttons
+filterButtons.forEach(function (button) {
+  // add click listeners to each button
+  button.addEventListener("click", function () {
+    // capture the value of the button
+    const filterValue = button.dataset.filter;
+
+    if (filterValue === "all") {
+      renderBooks(books);
+    } else {
+      const filtered = books.filter((book) => book.status === filterValue);
+      renderBooks(filtered);
+    }
+  });
 });
