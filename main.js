@@ -28,7 +28,11 @@ function renderBooks(books) {
   bookList.textContent = "";
 
   books.forEach(function (book) {
+    // creating the li element
     let list = document.createElement("li");
+    // setting it's html data-id
+    list.dataset.id = book.id;
+    // giving the list its values
     list.innerHTML = `${book.title} - ${book.author} - ${book.status}`;
     console.log(list);
     bookList.appendChild(list);
