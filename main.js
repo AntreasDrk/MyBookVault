@@ -1,7 +1,7 @@
 "user strict";
 
 // array to store books
-const books = [];
+let books = [];
 
 // id elements of the form
 const form = document.getElementById("book-form");
@@ -30,12 +30,20 @@ function renderBooks(books) {
   books.forEach(function (book) {
     // creating the li element
     let list = document.createElement("li");
+
+    // delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.innerHTML = "Remove";
+
     // setting it's html data-id
     list.dataset.id = book.id;
+
     // giving the list its values
     list.innerHTML = `${book.title} - ${book.author} - ${book.status}`;
-    console.log(list);
+
     bookList.appendChild(list);
+    list.appendChild(deleteBtn);
   });
 }
 
@@ -77,4 +85,24 @@ filterButtons.forEach(function (button) {
       renderBooks(filtered);
     }
   });
+});
+
+// delete button for all the books
+bookList.addEventListener("click", function (event) {
+  if (event.target.matches(".delete-btn")) {
+    // finds the nearest parent (li)
+    const li = event.target.closest("li");
+
+    // converts the id to a number
+    const id = Number(li.dataset.id);
+
+    // filters through the books that do not match the id
+    books = books.filter((book) => book.id !== id);
+
+    // sents them to localStorage (the updated Array)
+    localStorage.setItem("books", JSON.stringify(books));
+
+    // renders the books
+    renderBooks(books);
+  }
 });
