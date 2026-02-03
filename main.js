@@ -149,8 +149,11 @@ bookList.addEventListener("click", function (event) {
         // update values
         // save them
         // render
+        console.log("save");
       } else if (e.target.matches(".cancel-btn")) {
         // render back the original book
+        console.log("cancel");
+        renderBooks(books);
       }
     });
   }
