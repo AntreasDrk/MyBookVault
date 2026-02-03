@@ -93,7 +93,7 @@ filterButtons.forEach(function (button) {
   });
 });
 
-// delete button for all the books
+// delete button / edit button
 bookList.addEventListener("click", function (event) {
   if (event.target.matches(".delete-btn")) {
     // finds the nearest parent (li)
@@ -121,6 +121,13 @@ bookList.addEventListener("click", function (event) {
     li.innerHTML = `
       <input type="text" value="${foundBook.title}"> -
       <input type="text" value="${foundBook.author}">
+      <select id="status">
+      <option value="${foundBook.status}">${foundBook.status}</option>
+        <option value="read">Read</option>
+        <option value="own">Own</option>
+        <option value="wishlist">Wishlist</option>
+        <option value="reading">Currently Reading</option>
+      </select>
       `;
 
     // save button
@@ -136,5 +143,15 @@ bookList.addEventListener("click", function (event) {
     console.log(foundBook);
     li.appendChild(saveBtn);
     li.appendChild(cancelBtn);
+
+    li.addEventListener("click", function (e) {
+      if (e.target.matches(".save-btn")) {
+        // update values
+        // save them
+        // render
+      } else if (e.target.matches(".cancel-btn")) {
+        // render back the original book
+      }
+    });
   }
 });
