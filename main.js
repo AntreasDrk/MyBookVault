@@ -119,9 +119,9 @@ bookList.addEventListener("click", function (event) {
     const foundBook = books.find((book) => book.id === id);
 
     li.innerHTML = `
-      <input type="text" value="${foundBook.title}"> -
-      <input type="text" value="${foundBook.author}">
-      <select id="status">
+      <input class="title-input" type="text" value="${foundBook.title}"> -
+      <input class="author-input" type="text" value="${foundBook.author}">
+      <select class="status-field">
       <option value="${foundBook.status}">${foundBook.status}</option>
         <option value="read">Read</option>
         <option value="own">Own</option>
@@ -140,21 +140,25 @@ bookList.addEventListener("click", function (event) {
     cancelBtn.classList.add("cancel-btn");
     cancelBtn.innerText = "Cancel";
 
-    console.log(foundBook);
     li.appendChild(saveBtn);
     li.appendChild(cancelBtn);
+  } else if (event.target.matches(".save-btn")) {
+    const li = event.target.closest("li");
+    const id = Number(li.dataset.id);
+    const foundBook = books.find((book) => book.id === id);
 
-    li.addEventListener("click", function (e) {
-      if (e.target.matches(".save-btn")) {
-        // update values
-        // save them
-        // render
-        console.log("save");
-      } else if (e.target.matches(".cancel-btn")) {
-        // render back the original book
-        console.log("cancel");
-        renderBooks(books);
-      }
-    });
+    // update the values with the new ones
+    foundBook.title = li.querySelector(".title-input").value;
+    foundBook.author = li.querySelector(".author-input").value;
+    foundBook.status = li.querySelector(".status-field").value;
+
+    // update books
+    localStorage.setItem("books", JSON.stringify(books));
+
+    // render the new content
+    renderBooks(books);
+  } else if (event.target.matches(".cancel-btn")) {
+    // render back the original book
+    renderBooks(books);
   }
 });
