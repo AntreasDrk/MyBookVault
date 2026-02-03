@@ -36,6 +36,11 @@ function renderBooks(books) {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerHTML = "Remove";
 
+    // edit button
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    editBtn.innerHTML = "Edit";
+
     // setting it's html data-id
     list.dataset.id = book.id;
 
