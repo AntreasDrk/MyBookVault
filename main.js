@@ -34,12 +34,12 @@ function renderBooks(books) {
     // delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
-    deleteBtn.innerHTML = "Remove";
+    deleteBtn.innerText = "Remove";
 
     // edit button
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
-    editBtn.innerHTML = "Edit";
+    editBtn.innerText = "Edit";
 
     // setting it's html data-id
     list.dataset.id = book.id;
@@ -49,6 +49,7 @@ function renderBooks(books) {
 
     bookList.appendChild(list);
     list.appendChild(deleteBtn);
+    list.appendChild(editBtn);
   });
 }
 
@@ -109,5 +110,31 @@ bookList.addEventListener("click", function (event) {
 
     // renders the books
     renderBooks(books);
+  } else if (event.target.matches(".edit-btn")) {
+    const li = event.target.closest("li");
+
+    const id = Number(li.dataset.id);
+
+    // to get hold of the book inside the li element
+    const foundBook = books.find((book) => book.id === id);
+
+    li.innerHTML = `
+      <input type="text" value="${foundBook.title}"> -
+      <input type="text" value="${foundBook.author}">
+      `;
+
+    // save button
+    const saveBtn = document.createElement("button");
+    saveBtn.classList.add("save-btn");
+    saveBtn.innerText = "Save";
+
+    // cancel button
+    const cancelBtn = document.createElement("button");
+    cancelBtn.classList.add("cancel-btn");
+    cancelBtn.innerText = "Cancel";
+
+    console.log(foundBook);
+    li.appendChild(saveBtn);
+    li.appendChild(cancelBtn);
   }
 });
