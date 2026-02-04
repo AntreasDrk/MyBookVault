@@ -67,8 +67,26 @@ form.addEventListener("submit", function (e) {
   // prevent user from using wrong input
   if (titleInput.value.trim() === "") {
     e.preventDefault();
-    console.log("Wrong input");
+
+    // create error message
+    const errorMessage = document.createElement("p");
+    errorMessage.classList.add("title-error");
+    errorMessage.textContent = "Invalid input!";
+
+    // grabs the error element
+    const existingError = titleInput.parentElement.querySelector(".title-error");
+
+    // if an error message already exists remove it
+    if (existingError) {
+      existingError.remove();
+    }
+
+    // add error message after title input
+    titleInput.insertAdjacentElement("afterend", errorMessage);
   } else {
+    // removing the existing error once input is correct
+    const existingError = titleInput.parentElement.querySelector(".title-error");
+    existingError.remove();
     // adds book into books array
     books.push(newBook);
 
