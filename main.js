@@ -58,11 +58,7 @@ function renderBooks(books) {
 
 // as the name suggests it updates the state of the submit btn in the form
 function updateSubmitState() {
-  if (titleInput.value.trim() === "") {
-    formSubmitButton.disabled = true;
-  } else {
-    formSubmitButton.disabled = false;
-  }
+  formSubmitButton.disabled = titleInput.value.trim() === "";
 }
 
 // eventlistener that once the form is submited a book is added in the array books
