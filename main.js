@@ -69,7 +69,7 @@ form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // create error message
-    const errorMessage = document.createElement("p");
+    const errorMessage = document.createElement("span");
     errorMessage.classList.add("title-error");
     errorMessage.textContent = "Invalid input!";
 
