@@ -86,7 +86,12 @@ form.addEventListener("submit", function (e) {
   } else {
     // removing the existing error once input is correct
     const existingError = titleInput.parentElement.querySelector(".title-error");
-    existingError.remove();
+
+    // if an error message already exists remove it
+    if (existingError) {
+      existingError.remove();
+    }
+
     // adds book into books array
     books.push(newBook);
 
