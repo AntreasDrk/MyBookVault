@@ -64,17 +64,23 @@ form.addEventListener("submit", function (e) {
     status: statusSelect.value,
   };
 
-  // adds book into books array
-  books.push(newBook);
+  // prevent user from using wrong input
+  if (titleInput.value.trim() === "") {
+    e.preventDefault();
+    console.log("Wrong input");
+  } else {
+    // adds book into books array
+    books.push(newBook);
 
-  // saves to local storage
-  localStorage.setItem("books", JSON.stringify(books));
+    // saves to local storage
+    localStorage.setItem("books", JSON.stringify(books));
 
-  // renders books into page
-  renderBooks(books);
+    // renders books into page
+    renderBooks(books);
 
-  // resets form
-  form.reset();
+    // resets form
+    form.reset();
+  }
 });
 
 // looping through the filter buttons
@@ -122,11 +128,11 @@ bookList.addEventListener("click", function (event) {
       <input class="title-input" type="text" value="${foundBook.title}"> -
       <input class="author-input" type="text" value="${foundBook.author}">
       <select class="status-field">
-      <option value="${foundBook.status}">${foundBook.status}</option>
-        <option value="read">Read</option>
-        <option value="own">Own</option>
-        <option value="wishlist">Wishlist</option>
-        <option value="reading">Currently Reading</option>
+      <option>${foundBook.status}</option>
+        <option value="Read">Read</option>
+        <option value="Own">Own</option>
+        <option value="Wishlist">Wishlist</option>
+        <option value="Reading">Currently Reading</option>
       </select>
       `;
 
