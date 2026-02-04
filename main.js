@@ -1,4 +1,4 @@
-"user strict";
+"use strict";
 
 // array to store books
 let books = [];
@@ -48,7 +48,7 @@ function renderBooks(books) {
     list.dataset.id = book.id;
 
     // giving the list its values
-    list.innerHTML = `${book.title} - ${book.author} - ${book.status}`;
+    list.textContent = `${book.title} - ${book.author} - ${book.status}`;
 
     bookList.appendChild(list);
     list.appendChild(deleteBtn);
@@ -76,47 +76,18 @@ form.addEventListener("submit", function (e) {
     status: statusSelect.value,
   };
 
-  // prevent user from using wrong input
-  if (titleInput.value.trim() === "") {
-    e.preventDefault();
+  // adds book into books array
+  books.push(newBook);
 
-    // create error message
-    const errorMessage = document.createElement("span");
-    errorMessage.classList.add("title-error");
-    errorMessage.textContent = "Invalid input!";
+  // saves to local storage
+  localStorage.setItem("books", JSON.stringify(books));
 
-    // grabs the error element
-    const existingError = titleInput.parentElement.querySelector(".title-error");
+  // renders books into page
+  renderBooks(books);
 
-    // if an error message already exists remove it
-    if (existingError) {
-      existingError.remove();
-    }
-
-    // add error message after title input
-    titleInput.insertAdjacentElement("afterend", errorMessage);
-  } else {
-    // removing the existing error once input is correct
-    const existingError = titleInput.parentElement.querySelector(".title-error");
-
-    // if an error message already exists remove it
-    if (existingError) {
-      existingError.remove();
-    }
-
-    // adds book into books array
-    books.push(newBook);
-
-    // saves to local storage
-    localStorage.setItem("books", JSON.stringify(books));
-
-    // renders books into page
-    renderBooks(books);
-
-    // resets form
-    form.reset();
-    updateSubmitState();
-  }
+  // resets form
+  form.reset();
+  updateSubmitState();
 });
 
 // title input listener if the field is empty
