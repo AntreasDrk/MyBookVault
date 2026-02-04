@@ -9,6 +9,9 @@ const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const statusSelect = document.getElementById("status");
 
+// the form submit button
+const formSubmitButton = form.querySelector("button[type='submit']");
+
 // id of ul container
 const bookList = document.getElementById("book-list");
 
@@ -51,6 +54,15 @@ function renderBooks(books) {
     list.appendChild(deleteBtn);
     list.appendChild(editBtn);
   });
+}
+
+// as the name suggests it updates the state of the submit btn in the form
+function updateSubmitState() {
+  if (titleInput.value.trim() === "") {
+    formSubmitButton.disabled = true;
+  } else {
+    formSubmitButton.disabled = false;
+  }
 }
 
 // eventlistener that once the form is submited a book is added in the array books
@@ -103,7 +115,13 @@ form.addEventListener("submit", function (e) {
 
     // resets form
     form.reset();
+    updateSubmitState();
   }
+});
+
+// title input listener if the field is empty
+titleInput.addEventListener("input", function (e) {
+  updateSubmitState();
 });
 
 // looping through the filter buttons
