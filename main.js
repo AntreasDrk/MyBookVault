@@ -58,7 +58,9 @@ function renderBooks(books) {
 
 // as the name suggests it updates the state of the submit btn in the form
 function updateSubmitState() {
-  formSubmitButton.disabled = titleInput.value.trim() === "";
+  let titleValid = titleInput.value.trim() !== "";
+  let authorValid = authorInput.value.trim() !== "";
+  formSubmitButton.disabled = !(titleValid && authorValid);
 }
 
 // eventlistener that once the form is submited a book is added in the array books
@@ -87,9 +89,10 @@ form.addEventListener("submit", function (e) {
 });
 
 // title input listener if the field is empty
-titleInput.addEventListener("input", function (e) {
-  updateSubmitState();
-});
+titleInput.addEventListener("input", updateSubmitState());
+
+// author input listener if the field is empty
+authorInput.addEventListener("input", updateSubmitState());
 
 // looping through the filter buttons
 filterButtons.forEach(function (button) {
