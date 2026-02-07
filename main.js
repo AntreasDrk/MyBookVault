@@ -74,6 +74,16 @@ form.addEventListener("submit", function (e) {
     status: statusSelect.value,
   };
 
+  // stores Normalization for the book
+  const normalizedTitle = newBook.title.toLowerCase().trim();
+
+  const isDuplicate = books.some((book) => book.title.toLowerCase().trim() === normalizedTitle);
+  // If the book already exists, don't push it
+  if (isDuplicate) {
+    alert("Title already exists");
+    return;
+  }
+
   // adds book into books array
   books.push(newBook);
 
