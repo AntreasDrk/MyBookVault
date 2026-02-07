@@ -24,6 +24,7 @@ const storedBooks = JSON.parse(localStorage.getItem("books"));
 if (storedBooks) books.push(...storedBooks);
 
 // we call it here again to re-render the already existing books
+updateSubmitState();
 renderBooks(books);
 
 // display added books to page
@@ -99,10 +100,10 @@ form.addEventListener("submit", function (e) {
 });
 
 // title input listener if the field is empty
-titleInput.addEventListener("input", updateSubmitState());
+titleInput.addEventListener("input", updateSubmitState);
 
 // author input listener if the field is empty
-authorInput.addEventListener("input", updateSubmitState());
+authorInput.addEventListener("input", updateSubmitState);
 
 // looping through the filter buttons
 filterButtons.forEach(function (button) {
