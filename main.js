@@ -15,6 +15,9 @@ const formSubmitButton = form.querySelector("button[type='submit']");
 // id of ul container
 const bookList = document.getElementById("book-list");
 
+// search bar
+const searchInput = document.getElementById("search-bar");
+
 // filter buttons
 const filterButtons = document.querySelectorAll("button[data-filter]");
 
@@ -120,6 +123,24 @@ filterButtons.forEach(function (button) {
     }
   });
 });
+
+// SEARCH BAR ------------------------------
+searchInput.addEventListener("input", function (event) {
+  // grab user input and normalize it
+  const searchedInput = event.target.value.toLowerCase().trim();
+
+  // filter through books array
+  const filteredInput = books.filter((book) => book.title.toLowerCase().trim().includes(searchedInput) || book.author.toLowerCase().trim().includes(searchedInput));
+
+  // guard clause
+  if (searchedInput === "") {
+    renderBooks(books);
+    return;
+  }
+  // render filteredInput
+  renderBooks(filteredInput);
+});
+// ----------------------------------
 
 // delete button / edit button
 bookList.addEventListener("click", function (event) {
