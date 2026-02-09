@@ -31,10 +31,23 @@ updateSubmitState();
 renderBooks(books);
 
 // display added books to page
-function renderBooks(books) {
+function renderBooks(booksArray) {
   bookList.textContent = "";
 
-  books.forEach(function (book) {
+  // displays the message below if there are no books displayed
+  if (!booksArray.length) {
+    const displayNoBooksMsg = document.createElement("li");
+    displayNoBooksMsg.classList.add("no-books-display-msg");
+
+    const displayedMsg = document.createElement("p");
+    displayedMsg.textContent = "No books found. ¯(ツ)_/¯";
+
+    displayNoBooksMsg.appendChild(displayedMsg);
+    bookList.appendChild(displayNoBooksMsg);
+    return;
+  }
+
+  booksArray.forEach(function (book) {
     // creating the li element
     let list = document.createElement("li");
 
