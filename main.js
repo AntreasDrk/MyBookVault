@@ -129,14 +129,15 @@ searchInput.addEventListener("input", function (event) {
   // grab user input and normalize it
   const searchedInput = event.target.value.toLowerCase().trim();
 
-  // filter through books array
-  const filteredInput = books.filter((book) => book.title.toLowerCase().trim().includes(searchedInput) || book.author.toLowerCase().trim().includes(searchedInput));
-
   // guard clause
   if (searchedInput === "") {
     renderBooks(books);
     return;
   }
+
+  // filter through books array
+  const filteredInput = books.filter((book) => book.title.toLowerCase().trim().includes(searchedInput) || book.author.toLowerCase().trim().includes(searchedInput));
+
   // render filteredInput
   renderBooks(filteredInput);
 });
