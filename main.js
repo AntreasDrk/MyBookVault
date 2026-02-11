@@ -3,6 +3,9 @@
 // array to store books
 let books = [];
 
+// holding the current state of sorting
+let currentSort = "title";
+
 // id elements of the form
 const form = document.getElementById("book-form");
 const titleInput = document.getElementById("title");
@@ -29,9 +32,10 @@ const storedBooks = JSON.parse(localStorage.getItem("books"));
 
 if (storedBooks) books.push(...storedBooks);
 
-// we call it here again to re-render the already existing books
+// calling sortBooks here so the sorted books (if selected) appear here
+sortBooks(currentSort);
+
 updateSubmitState();
-renderBooks(books);
 
 // display added books to page
 function renderBooks(booksArray) {
@@ -84,7 +88,7 @@ function updateSubmitState() {
 }
 
 // sorting books
-function sortedBooks(byWhat) {
+function sortBooks(byWhat) {
   // making a shallow copy of the original array
   const sortedBooks = [...books];
 
@@ -120,9 +124,6 @@ form.addEventListener("submit", function (e) {
   // saves to local storage
   localStorage.setItem("books", JSON.stringify(books));
 
-  // renders books into page
-  renderBooks(books);
-
   // resets form
   form.reset();
   updateSubmitState();
@@ -130,7 +131,11 @@ form.addEventListener("submit", function (e) {
 
 // ------- SORTING ---------------------------------
 sortingSelect.addEventListener("change", function (e) {
-  sortedBooks(e.target.value);
+  // updates the current sorted value so it stays
+  currentSort = e.target.value;
+
+  console.log(currentSort);
+  sortBooks(currentSort);
 });
 // -------------------------------------------------
 
@@ -148,7 +153,7 @@ filterButtons.forEach(function (button) {
     const filterValue = button.dataset.filter;
 
     if (filterValue === "all") {
-      renderBooks(books);
+      sortBooks(currentSort);
     } else {
       const filtered = books.filter((book) => book.status === filterValue);
       renderBooks(filtered);
@@ -163,7 +168,7 @@ searchInput.addEventListener("input", function (event) {
 
   // guard clause
   if (searchedInput === "") {
-    renderBooks(books);
+    sortBooks(currentSort);
     return;
   }
 
@@ -191,7 +196,7 @@ bookList.addEventListener("click", function (event) {
     localStorage.setItem("books", JSON.stringify(books));
 
     // renders the books
-    renderBooks(books);
+    sortBooks(currentSort);
   } else if (event.target.matches(".edit-btn")) {
     const li = event.target.closest("li");
 
@@ -238,9 +243,9 @@ bookList.addEventListener("click", function (event) {
     localStorage.setItem("books", JSON.stringify(books));
 
     // render the new content
-    renderBooks(books);
+    sortBooks(currentSort);
   } else if (event.target.matches(".cancel-btn")) {
     // render back the original book
-    renderBooks(books);
+    sortBooks(currentSort);
   }
 });
