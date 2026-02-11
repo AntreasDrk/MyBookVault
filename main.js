@@ -86,11 +86,11 @@ function updateSubmitState() {
 // sorting books
 function sortedBooks(byWhat) {
   // making a shallow copy of the original array
-  const copiedBooks = [...books];
+  const sortedBooks = [...books];
 
-  copiedBooks.sort((a[byWhat] ?? "").localeCompare(b[byWhat] ?? ""));
+  sortedBooks.sort((a, b) => (a[byWhat] ?? "").localeCompare(b[byWhat] ?? ""));
 
-  return copiedBooks;
+  renderBooks(sortedBooks);
 }
 
 // eventlistener that once the form is submited a book is added in the array books
@@ -127,6 +127,12 @@ form.addEventListener("submit", function (e) {
   form.reset();
   updateSubmitState();
 });
+
+// ------- SORTING ---------------------------------
+sortingSelect.addEventListener("change", function (e) {
+  sortedBooks(e.target.value);
+});
+// -------------------------------------------------
 
 // title input listener if the field is empty
 titleInput.addEventListener("input", updateSubmitState);
