@@ -9,6 +9,9 @@ const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const statusSelect = document.getElementById("status");
 
+// getting the select option for sorting the books
+const sortingSelect = document.getElementById("sorting-books");
+
 // the form submit button
 const formSubmitButton = form.querySelector("button[type='submit']");
 
@@ -78,6 +81,16 @@ function updateSubmitState() {
   let titleValid = titleInput.value.trim() !== "";
   let authorValid = authorInput.value.trim() !== "";
   formSubmitButton.disabled = !(titleValid && authorValid);
+}
+
+// sorting books
+function sortedBooks(byWhat) {
+  // making a shallow copy of the original array
+  const copiedBooks = [...books];
+
+  copiedBooks.sort((a[byWhat] ?? "").localeCompare(b[byWhat] ?? ""));
+
+  return copiedBooks;
 }
 
 // eventlistener that once the form is submited a book is added in the array books
