@@ -6,6 +6,9 @@ let books = [];
 // holding the current state of sorting
 let currentSort = "title";
 
+let currentSearch = "";
+let currentFilter = "all";
+
 // id elements of the form
 const form = document.getElementById("book-form");
 const titleInput = document.getElementById("title");
@@ -134,7 +137,6 @@ sortingSelect.addEventListener("change", function (e) {
   // updates the current sorted value so it stays
   currentSort = e.target.value;
 
-  console.log(currentSort);
   sortBooks(currentSort);
 });
 // -------------------------------------------------
@@ -249,3 +251,14 @@ bookList.addEventListener("click", function (event) {
     sortBooks(currentSort);
   }
 });
+
+// displayBooks is a single pipeline which every action to display
+// sort, filter, search will be decided here, so not all functions
+// are everywhere and it gets messy later on
+function displayBooks() {
+  const result = [...books];
+
+  result.sort((a, b) => (a[currentSort] ?? "").localeCompare(b[currentSort] ?? ""));
+
+  renderBooks(result);
+}
