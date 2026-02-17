@@ -36,7 +36,7 @@ const storedBooks = JSON.parse(localStorage.getItem("books"));
 if (storedBooks) books.push(...storedBooks);
 
 // calling sortBooks here so the sorted books (if selected) appear here
-sortBooks(currentSort);
+displayBooks();
 
 updateSubmitState();
 
@@ -90,16 +90,6 @@ function updateSubmitState() {
   formSubmitButton.disabled = !(titleValid && authorValid);
 }
 
-// sorting books
-function sortBooks(byWhat) {
-  // making a shallow copy of the original array
-  const sortedBooks = [...books];
-
-  sortedBooks.sort((a, b) => (a[byWhat] ?? "").localeCompare(b[byWhat] ?? ""));
-
-  renderBooks(sortedBooks);
-}
-
 // eventlistener that once the form is submited a book is added in the array books
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -137,7 +127,7 @@ sortingSelect.addEventListener("change", function (e) {
   // updates the current sorted value so it stays
   currentSort = e.target.value;
 
-  sortBooks(currentSort);
+  displayBooks();
 });
 // -------------------------------------------------
 
@@ -155,7 +145,7 @@ filterButtons.forEach(function (button) {
     const filterValue = button.dataset.filter;
 
     if (filterValue === "all") {
-      sortBooks(currentSort);
+      displayBooks();
     } else {
       const filtered = books.filter((book) => book.status === filterValue);
       renderBooks(filtered);
@@ -170,7 +160,7 @@ searchInput.addEventListener("input", function (event) {
 
   // guard clause
   if (searchedInput === "") {
-    sortBooks(currentSort);
+    displayBooks();
     return;
   }
 
@@ -198,7 +188,7 @@ bookList.addEventListener("click", function (event) {
     localStorage.setItem("books", JSON.stringify(books));
 
     // renders the books
-    sortBooks(currentSort);
+    displayBooks();
   } else if (event.target.matches(".edit-btn")) {
     const li = event.target.closest("li");
 
@@ -245,10 +235,10 @@ bookList.addEventListener("click", function (event) {
     localStorage.setItem("books", JSON.stringify(books));
 
     // render the new content
-    sortBooks(currentSort);
+    displayBooks();
   } else if (event.target.matches(".cancel-btn")) {
     // render back the original book
-    sortBooks(currentSort);
+    displayBooks();
   }
 });
 
