@@ -142,14 +142,8 @@ filterButtons.forEach(function (button) {
   // add click listeners to each button
   button.addEventListener("click", function () {
     // capture the value of the button
-    const filterValue = button.dataset.filter;
-
-    if (filterValue === "all") {
-      displayBooks();
-    } else {
-      const filtered = books.filter((book) => book.status === filterValue);
-      renderBooks(filtered);
-    }
+    currentFilter = button.dataset.filter;
+    displayBooks();
   });
 });
 
@@ -246,7 +240,11 @@ bookList.addEventListener("click", function (event) {
 // sort, filter, search will be decided here, so not all functions
 // are everywhere and it gets messy later on
 function displayBooks() {
-  const result = [...books];
+  let result = [...books];
+
+  if (currentFilter !== "all") {
+    result = result.filter((book) => book.status === currentFilter);
+  }
 
   result.sort((a, b) => (a[currentSort] ?? "").localeCompare(b[currentSort] ?? ""));
 
