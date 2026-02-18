@@ -234,7 +234,9 @@ function displayBooks() {
 
   // search
   // filter through books array
-  result = result.filter((book) => book.title.toLowerCase().trim().includes(currentSearch) || book.author.toLowerCase().trim().includes(currentSearch));
+  if (currentSearch) {
+    result = result.filter((book) => book.title.toLowerCase().trim().includes(currentSearch) || book.author.toLowerCase().trim().includes(currentSearch));
+  }
 
   // filter
   if (currentFilter !== "all") {
