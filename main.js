@@ -150,19 +150,9 @@ filterButtons.forEach(function (button) {
 // SEARCH BAR ------------------------------
 searchInput.addEventListener("input", function (event) {
   // grab user input and normalize it
-  const searchedInput = event.target.value.toLowerCase().trim();
+  currentSearch = event.target.value.toLowerCase().trim();
 
-  // guard clause
-  if (searchedInput === "") {
-    displayBooks();
-    return;
-  }
-
-  // filter through books array
-  const filteredInput = books.filter((book) => book.title.toLowerCase().trim().includes(searchedInput) || book.author.toLowerCase().trim().includes(searchedInput));
-
-  // render filteredInput
-  renderBooks(filteredInput);
+  displayBooks();
 });
 // ----------------------------------
 
@@ -242,10 +232,16 @@ bookList.addEventListener("click", function (event) {
 function displayBooks() {
   let result = [...books];
 
+  // search
+  // filter through books array
+  result = result.filter((book) => book.title.toLowerCase().trim().includes(currentSearch) || book.author.toLowerCase().trim().includes(currentSearch));
+
+  // filter
   if (currentFilter !== "all") {
     result = result.filter((book) => book.status === currentFilter);
   }
 
+  // sort
   result.sort((a, b) => (a[currentSort] ?? "").localeCompare(b[currentSort] ?? ""));
 
   renderBooks(result);
