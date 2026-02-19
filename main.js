@@ -135,12 +135,13 @@ sortingSelect.addEventListener("change", function (e) {
 
 //  sorting direction button
 sortDirectionBtn.addEventListener("click", function () {
+  // toggling the button from asc to desc
   if (currentSortDirection === "asc") {
     currentSortDirection = "desc";
-    sortDirectionBtn.innerHTML = "Desc";
+    sortDirectionBtn.textContent = "Desc";
   } else {
     currentSortDirection = "asc";
-    sortDirectionBtn.innerHTML = "Asc";
+    sortDirectionBtn.textContent = "Asc";
   }
 
   displayBooks();
@@ -260,7 +261,7 @@ function displayBooks() {
   }
 
   // sort
-  result.sort((a, b) => (a[currentSort] ?? "").localeCompare(b[currentSort] ?? ""));
+  result.sort((a, b) => (currentSortDirection === "asc" ? (a[currentSort] ?? "").localeCompare(b[currentSort] ?? "") : (b[currentSort] ?? "").localeCompare(a[currentSort] ?? "")));
 
   renderBooks(result);
 }
