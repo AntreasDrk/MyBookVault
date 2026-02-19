@@ -260,7 +260,7 @@ function displayBooks() {
     result = result.filter((book) => book.status === currentFilter);
   }
 
-  // sort
+  // sort and direction sorting
   result.sort((a, b) => (currentSortDirection === "asc" ? (a[currentSort] ?? "").localeCompare(b[currentSort] ?? "") : (b[currentSort] ?? "").localeCompare(a[currentSort] ?? "")));
 
   renderBooks(result);
