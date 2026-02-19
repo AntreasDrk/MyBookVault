@@ -5,6 +5,7 @@ let books = [];
 
 // holding the current state of sorting
 let currentSort = "title";
+let currentSortDirection = "asc";
 
 let currentSearch = "";
 let currentFilter = "all";
@@ -17,6 +18,8 @@ const statusSelect = document.getElementById("status");
 
 // getting the select option for sorting the books
 const sortingSelect = document.getElementById("sorting-books");
+
+const sortDirectionBtn = document.getElementById("sort-direction");
 
 // the form submit button
 const formSubmitButton = form.querySelector("button[type='submit']");
