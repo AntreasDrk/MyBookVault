@@ -132,6 +132,19 @@ sortingSelect.addEventListener("change", function (e) {
 
   displayBooks();
 });
+
+//  sorting direction button
+sortDirectionBtn.addEventListener("click", function () {
+  if (currentSortDirection === "asc") {
+    currentSortDirection = "desc";
+    sortDirectionBtn.innerHTML = "Desc";
+  } else {
+    currentSortDirection = "asc";
+    sortDirectionBtn.innerHTML = "Asc";
+  }
+
+  displayBooks();
+});
 // -------------------------------------------------
 
 // title input listener if the field is empty
