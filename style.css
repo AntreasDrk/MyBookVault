@@ -29,6 +29,7 @@ body {
 .active-filter-btn {
   background-color: #d5cea3;
   color: #3c2a21;
+  font-weight: bold;
 }
 
 /* add-book btn */

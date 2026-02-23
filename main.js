@@ -264,4 +264,17 @@ function displayBooks() {
   result.sort((a, b) => (currentSortDirection === "asc" ? (a[currentSort] ?? "").localeCompare(b[currentSort] ?? "") : (b[currentSort] ?? "").localeCompare(a[currentSort] ?? "")));
 
   renderBooks(result);
+  updateActiveUI();
+}
+
+// updates UI based on state
+function updateActiveUI() {
+  // looping through the filter buttons
+  filterButtons.forEach(function (button) {
+    if (button.dataset.filter === currentFilter) {
+      button.classList.add("active-filter-btn");
+    } else {
+      button.classList.remove("active-filter-btn");
+    }
+  });
 }
