@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #1a120b;
+  color: #e5e5cb;
 }
 
 .filtered-books {
@@ -21,4 +23,17 @@ body {
   width: 300px;
   background-color: rgb(209, 209, 209);
   color: rgb(92, 92, 230);
+}
+
+/* highlights active filter buttons */
+.active-filter-btn {
+  background-color: #d5cea3;
+  color: #3c2a21;
+}
+
+/* add-book btn */
+.add-book-btn {
+  background-color: #d5cea3;
+  color: #3c2a21;
+  cursor: pointer;
 }
