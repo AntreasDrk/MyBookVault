@@ -38,21 +38,18 @@ const storedBooks = JSON.parse(localStorage.getItem("books"));
 
 if (storedBooks) books.push(...storedBooks);
 
+// stored state
+const savedState = JSON.parse(localStorage.getItem("uiState"));
+currentFilter = savedState?.filter ?? "all";
+currentSort = savedState?.sort ?? "title";
+currentSortDirection = savedState?.direction ?? "asc";
+currentSearch = savedState?.search ?? "";
+
 // calling sortBooks here so the sorted books (if selected) appear here
 displayBooks();
 
 updateSubmitState();
 
-// ------------------- saves UI state to local storage ------------------
-let savedState = {
-  filter: currentFilter,
-  sort: currentSort,
-  sortDirect: currentSortDirection,
-  search: currentSearch,
-};
-
-localStorage.setItem("savedState", JSON.stringify(savedState));
-// ---------------------------------------------------------------------
 // display added books to page
 function renderBooks(booksArray) {
   bookList.textContent = "";
@@ -288,3 +285,17 @@ function updateActiveUI() {
     }
   });
 }
+
+// ------------------- saves UI state to local storage ------------------
+
+function saveUIState() {
+  let uiState = {
+    filter: currentFilter,
+    sort: currentSort,
+    direction: currentSortDirection,
+    search: currentSearch,
+  };
+
+  localStorage.setItem("uiState", JSON.stringify(uiState));
+}
+// ---------------------------------------------------------------------
