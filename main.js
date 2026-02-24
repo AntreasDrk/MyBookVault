@@ -136,7 +136,7 @@ form.addEventListener("submit", function (e) {
 sortingSelect.addEventListener("change", function (e) {
   // updates the current sorted value so it stays
   currentSort = e.target.value;
-
+  saveUIState();
   displayBooks();
 });
 
@@ -150,7 +150,7 @@ sortDirectionBtn.addEventListener("click", function () {
     currentSortDirection = "asc";
     sortDirectionBtn.textContent = "Asc";
   }
-
+  saveUIState();
   displayBooks();
 });
 // -------------------------------------------------
@@ -167,6 +167,7 @@ filterButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     // capture the value of the button
     currentFilter = button.dataset.filter;
+    saveUIState();
     displayBooks();
   });
 });
@@ -175,7 +176,7 @@ filterButtons.forEach(function (button) {
 searchInput.addEventListener("input", function (event) {
   // grab user input and normalize it
   currentSearch = event.target.value.toLowerCase().trim();
-
+  saveUIState();
   displayBooks();
 });
 // ----------------------------------
