@@ -40,6 +40,8 @@ if (storedBooks) books.push(...storedBooks);
 
 // stored state
 const savedState = JSON.parse(localStorage.getItem("uiState"));
+
+// updating state based on what's restored
 currentFilter = savedState?.filter ?? "all";
 currentSort = savedState?.sort ?? "title";
 currentSortDirection = savedState?.direction ?? "asc";
