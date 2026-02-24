@@ -44,6 +44,7 @@ currentFilter = savedState?.filter ?? "all";
 currentSort = savedState?.sort ?? "title";
 currentSortDirection = savedState?.direction ?? "asc";
 currentSearch = savedState?.search ?? "";
+searchInput.value = currentSearch;
 
 // calling sortBooks here so the sorted books (if selected) appear here
 displayBooks();
