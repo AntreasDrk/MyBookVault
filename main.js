@@ -43,6 +43,16 @@ displayBooks();
 
 updateSubmitState();
 
+// ------------------- saves UI state to local storage ------------------
+let savedState = {
+  filter: currentFilter,
+  sort: currentSort,
+  sortDirect: currentSortDirection,
+  search: currentSearch,
+};
+
+localStorage.setItem("savedState", JSON.stringify(savedState));
+// ---------------------------------------------------------------------
 // display added books to page
 function renderBooks(booksArray) {
   bookList.textContent = "";
