@@ -14,7 +14,7 @@
     <!-- CONTROLS -->
     <section class="controls">
       <!-- search bar -->
-      <div class="search-bar-container">
+      <div class="search">
         <input id="search-bar" class="search-bar" type="search" placeholder="What book are you looking for?" />
       </div>
 
@@ -28,8 +28,8 @@
       </div>
 
       <!-- sorting books -->
-      <div class="sorting-container">
-        <span>Sort:</span>
+      <div class="sorting">
+        <label for="sorting-books">Sort:</label>
 
         <select id="sorting-books">
           <option value="title">by Title</option>
@@ -45,8 +45,10 @@
     <section class="add-book-form">
       <!-- creates user form to add book -->
       <form id="book-form">
-        <input id="title" type="text" placeholder="Enter Book title" required />
-        <input id="author" type="text" placeholder="Enter Author" required />
+        <div class="form-group">
+          <input id="title" type="text" placeholder="Enter Book title" required />
+          <input id="author" type="text" placeholder="Enter Author" required />
+        </div>
 
         <select id="status">
           <option value="Read">Read</option>
