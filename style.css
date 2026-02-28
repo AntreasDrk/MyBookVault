@@ -58,6 +58,24 @@ h1 {
 /* FORM */
 #book-form {
   display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#book-form .form-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#book-form .form-group input {
+  margin: 5px 10px 5px 10px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 12px;
+  border: 1px black solid;
+  background-color: rgb(209, 209, 209);
+  color: #3c2a21;
+  opacity: 0.3;
+  font-weight: bold;
 }
 /* add-book btn */
 #book-form button:disabled {
