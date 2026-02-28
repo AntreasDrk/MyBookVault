@@ -20,6 +20,16 @@ h1 {
   margin: 20px 10px 20px 10px;
 }
 
+.filter > button {
+  background-color: #d5cea3;
+  color: #3c2a21;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
 .title-error {
   color: red;
   font-size: small;
@@ -28,12 +38,14 @@ h1 {
 
 .search-bar {
   margin: 5px 10px 5px 10px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 6px;
+  padding: 15px 20px 15px 20px;
+  border-radius: 12px;
   border: 1px black solid;
-  width: 300px;
+  width: 600px;
   background-color: rgb(209, 209, 209);
-  color: rgb(92, 92, 230);
+  color: #3c2a21;
+  opacity: 0.3;
+  font-weight: bold;
 }
 
 /* highlights active filter buttons */
@@ -44,7 +56,7 @@ h1 {
 }
 
 /* add-book btn */
-.add-book-btn {
+.form-group > button {
   background-color: #d5cea3;
   color: #3c2a21;
   cursor: pointer;
