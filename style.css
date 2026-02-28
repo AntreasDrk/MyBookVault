@@ -60,28 +60,37 @@ h1 {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 #book-form .form-group {
   display: flex;
-  flex-wrap: wrap;
+  flex: 1;
+  gap: 10px;
 }
 
 #book-form .form-group input {
-  margin: 5px 10px 5px 10px;
+  flex: 1;
   padding: 10px 10px 10px 10px;
   border-radius: 12px;
   border: 1px black solid;
   background-color: rgb(209, 209, 209);
   color: #3c2a21;
-  opacity: 0.3;
   font-weight: bold;
 }
+
 /* add-book btn */
+#book-form button {
+  white-space: nowrap;
+}
+
 #book-form button:disabled {
   background-color: #d5cea3;
+  font-weight: bold;
+  border-radius: 6px;
   padding: 5px 10px 5px 10px;
   cursor: not-allowed;
+  font-size: 14px;
 }
 
 #book-form button:not(:disabled) {
