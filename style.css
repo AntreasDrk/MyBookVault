@@ -55,11 +55,29 @@ h1 {
   font-weight: bold;
 }
 
+/* FORM */
+#book-form {
+  display: flex;
+}
 /* add-book btn */
-.form-group > button {
+#book-form button:disabled {
+  background-color: #d5cea3;
+  padding: 5px 10px 5px 10px;
+  cursor: not-allowed;
+}
+
+#book-form button:not(:disabled) {
   background-color: #d5cea3;
   color: #3c2a21;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 5px 10px 5px 10px;
   cursor: pointer;
+}
+
+#book-form button:not(:disabled):hover {
+  opacity: 0.8;
 }
 
 main > .book-list-container > ul {
