@@ -23,6 +23,17 @@ h1 {
   font-size: 50px;
 }
 
+/* style for buttons */
+.def-butns-stl {
+  background-color: #d5cea3;
+  color: #3c2a21;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
 .filter {
   margin: 20px 10px 20px 10px;
 }
@@ -60,6 +71,17 @@ h1 {
   background-color: #d5cea3;
   color: #3c2a21;
   font-weight: bold;
+}
+
+/* SORT-DIRECTION */
+#sort-direction {
+  background-color: #d5cea3;
+  color: #3c2a21;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
 }
 
 /* FORM */
