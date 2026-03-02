@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #1a120b;
+  background-color: #3c2a21;
   color: #e5e5cb;
 }
 
@@ -37,7 +37,7 @@ h1 {
 /* CONTROLS SECTION */
 .controls {
   padding: 15px;
-  background-color: #3c2a21;
+  background-color: #251a14c9;
   border: 1px solid #d5cea3;
   border-radius: 10px;
 }
@@ -84,6 +84,14 @@ h1 {
   border-radius: 6px;
   padding: 5px 10px 5px 10px;
   cursor: pointer;
+}
+
+/* FORM SECTION */
+.add-book-form {
+  padding: 15px;
+  background-color: #251a10;
+  border: 5px solid #d5cea3;
+  border-radius: 10px;
 }
 
 /* FORM */
