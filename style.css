@@ -150,12 +150,16 @@ main > .book-list-container > ul {
   background-color: #3c2a21;
   list-style: none;
   padding: 20px;
+  border: 2px solid #d5cea3;
+  border-radius: 10px;
 }
 
 main > .book-list-container > ul > li {
   font-size: 20px;
   padding: 10px;
   border: 2px solid #1a120b;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
 
 main > .book-list-container > ul > li > button {
