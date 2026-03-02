@@ -47,6 +47,8 @@ currentSort = savedState?.sort ?? "title";
 currentSortDirection = savedState?.direction ?? "asc";
 currentSearch = savedState?.search ?? "";
 searchInput.value = currentSearch;
+sortingSelect.value = currentSort;
+sortDirectionBtn.value = currentSortDirection;
 
 // calling sortBooks here so the sorted books (if selected) appear here
 displayBooks();
@@ -148,11 +150,10 @@ sortDirectionBtn.addEventListener("click", function () {
   // toggling the button from asc to desc
   if (currentSortDirection === "asc") {
     currentSortDirection = "desc";
-    sortDirectionBtn.textContent = "Desc";
   } else {
     currentSortDirection = "asc";
-    sortDirectionBtn.textContent = "Asc";
   }
+
   saveUIState();
   displayBooks();
 });
@@ -288,6 +289,13 @@ function updateActiveUI() {
       button.classList.remove("active-filter-btn");
     }
   });
+
+  // updates the button based on it's state
+  if (currentSortDirection === "asc") {
+    sortDirectionBtn.textContent = "Asc";
+  } else {
+    sortDirectionBtn.textContent = "Desc";
+  }
 }
 
 // ------------------- saves UI state to local storage ------------------
