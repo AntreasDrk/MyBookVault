@@ -37,6 +37,7 @@ h1 {
 /* CONTROLS SECTION */
 .controls {
   padding: 15px;
+  background-color: #3c2a21;
   border: 1px solid #d5cea3;
   border-radius: 10px;
 }
