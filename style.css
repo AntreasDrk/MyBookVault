@@ -74,7 +74,7 @@ h1 {
 }
 
 /* SORT-DIRECTION */
-#sort-direction {
+.def-butns-stl {
   background-color: #d5cea3;
   color: #3c2a21;
   font-weight: bold;
