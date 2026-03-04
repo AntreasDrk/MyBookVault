@@ -57,21 +57,6 @@ updateSubmitState();
 
 // display added books to page
 function renderBooks(booksArray) {
-  bookList.textContent = "";
-
-  // displays the message below if there are no books displayed
-  if (!booksArray.length) {
-    const displayNoBooksMsg = document.createElement("li");
-    displayNoBooksMsg.classList.add("no-books-display-msg");
-
-    const displayedMsg = document.createElement("p");
-    displayedMsg.textContent = "No books found. ¯(ツ)_/¯";
-
-    displayNoBooksMsg.appendChild(displayedMsg);
-    bookList.appendChild(displayNoBooksMsg);
-    return;
-  }
-
   booksArray.forEach(function (book) {
     // creating the li element
     let list = document.createElement("li");
@@ -275,8 +260,31 @@ function displayBooks() {
   // sort and direction sorting
   result.sort((a, b) => (currentSortDirection === "asc" ? (a[currentSort] ?? "").localeCompare(b[currentSort] ?? "") : (b[currentSort] ?? "").localeCompare(a[currentSort] ?? "")));
 
-  renderBooks(result);
-  updateActiveUI();
+  bookList.textContent = "";
+
+  // creating the li element that will display the message if theres no books or matching books
+  const displayNoBooksMsg = document.createElement("li");
+  displayNoBooksMsg.classList.add("no-books-display-msg");
+
+  const displayedMsg = document.createElement("p");
+
+  // displays the message below if there are no books displayed
+  if (!books.length) {
+    displayedMsg.textContent = "Let's add our first book!";
+
+    displayNoBooksMsg.appendChild(displayedMsg);
+    bookList.appendChild(displayNoBooksMsg);
+    return;
+  } else if (!result.length) {
+    displayedMsg.textContent = "No books found. ¯_(ツ)_/¯";
+
+    displayNoBooksMsg.appendChild(displayedMsg);
+    bookList.appendChild(displayNoBooksMsg);
+    return;
+  } else {
+    renderBooks(result);
+    updateActiveUI();
+  }
 }
 
 // updates UI based on state
