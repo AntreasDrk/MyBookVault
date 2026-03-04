@@ -195,6 +195,9 @@ bookList.addEventListener("click", function (event) {
 
     const id = Number(li.dataset.id);
 
+    // this will check wether theres a book thats been editing or not
+    if (editingBookID !== null) return;
+
     // asigning the id of the clicked book
     editingBookID = id;
 
