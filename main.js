@@ -195,6 +195,9 @@ bookList.addEventListener("click", function (event) {
 
     const id = Number(li.dataset.id);
 
+    // asigning the id of the clicked book
+    editingBookID = id;
+
     // to get hold of the book inside the li element
     const foundBook = books.find((book) => book.id === id);
 
@@ -235,9 +238,15 @@ bookList.addEventListener("click", function (event) {
     // update books
     localStorage.setItem("books", JSON.stringify(books));
 
+    // restoring the value so the state is back to normal
+    editingBookID = null;
+
     // render the new content
     displayBooks();
   } else if (event.target.matches(".cancel-btn")) {
+    // restoring the value so the state is back to normal
+    editingBookID = null;
+
     // render back the original book
     displayBooks();
   }
