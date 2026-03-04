@@ -10,6 +10,9 @@ let currentSortDirection = "asc";
 let currentSearch = "";
 let currentFilter = "all";
 
+// will hold the id of the book thats being edited
+let editingBookID = null;
+
 // id elements of the form
 const form = document.getElementById("book-form");
 const titleInput = document.getElementById("title");
