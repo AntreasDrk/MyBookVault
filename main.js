@@ -234,6 +234,19 @@ bookList.addEventListener("click", function (event) {
     // focuses and selects the entire text on the input field title
     titleField.focus();
     titleField.select();
+
+    // adds the function to close when the escape button is pressed
+    // and save when enter is pressed
+    li.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        li.querySelector(".save-btn").click();
+      }
+
+      if (e.key === "Escape") {
+        li.querySelector(".cancel-btn").click();
+      }
+    });
   } else if (event.target.matches(".save-btn")) {
     const li = event.target.closest("li");
     const id = Number(li.dataset.id);
