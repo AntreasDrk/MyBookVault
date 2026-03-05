@@ -215,6 +215,9 @@ bookList.addEventListener("click", function (event) {
       </select>
       `;
 
+    // focuses on the first field which is title
+    li.querySelector(".title-input").focus();
+
     // save button
     const saveBtn = document.createElement("button");
     saveBtn.classList.add("save-btn");
