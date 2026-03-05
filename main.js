@@ -216,7 +216,7 @@ bookList.addEventListener("click", function (event) {
       `;
 
     // focuses on the first field which is title
-    li.querySelector(".title-input").focus();
+    const titleField = li.querySelector(".title-input");
 
     // save button
     const saveBtn = document.createElement("button");
@@ -230,6 +230,10 @@ bookList.addEventListener("click", function (event) {
 
     li.appendChild(saveBtn);
     li.appendChild(cancelBtn);
+
+    // focuses and selects the entire text on the input field title
+    titleField.focus();
+    titleField.select();
   } else if (event.target.matches(".save-btn")) {
     const li = event.target.closest("li");
     const id = Number(li.dataset.id);
