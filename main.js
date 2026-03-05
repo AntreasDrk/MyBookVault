@@ -51,7 +51,6 @@ currentSortDirection = savedState?.direction ?? "asc";
 currentSearch = savedState?.search ?? "";
 searchInput.value = currentSearch;
 sortingSelect.value = currentSort;
-sortDirectionBtn.value = currentSortDirection;
 
 // calling sortBooks here so the sorted books (if selected) appear here
 displayBooks();
