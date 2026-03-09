@@ -224,10 +224,17 @@ bookList.addEventListener("click", function (event) {
     saveBtn.classList.add("save-btn");
     saveBtn.innerText = "Save";
 
+    // runs the function so button starts enabled
+    validateEditFields();
+
     // cancel button
     const cancelBtn = document.createElement("button");
     cancelBtn.classList.add("cancel-btn");
     cancelBtn.innerText = "Cancel";
+
+    // attaching listeners to the fields
+    titleField.addEventListener("input", validateEditFields);
+    authorField.addEventListener("input", validateEditFields);
 
     // validation function for edit fields
     function validateEditFields() {
@@ -257,8 +264,6 @@ bookList.addEventListener("click", function (event) {
       }
     });
   } else if (event.target.matches(".save-btn")) {
-    // runs the function so button starts enabled
-    validateEditFields();
     const li = event.target.closest("li");
     const id = Number(li.dataset.id);
     const foundBook = books.find((book) => book.id === id);
