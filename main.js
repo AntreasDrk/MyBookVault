@@ -257,6 +257,8 @@ bookList.addEventListener("click", function (event) {
       }
     });
   } else if (event.target.matches(".save-btn")) {
+    // runs the function so button starts enabled
+    validateEditFields();
     const li = event.target.closest("li");
     const id = Number(li.dataset.id);
     const foundBook = books.find((book) => book.id === id);
