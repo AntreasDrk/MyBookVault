@@ -217,6 +217,7 @@ bookList.addEventListener("click", function (event) {
 
     // focuses on the first field which is title
     const titleField = li.querySelector(".title-input");
+    const authorField = li.querySelector(".author-input");
 
     // save button
     const saveBtn = document.createElement("button");
@@ -227,6 +228,14 @@ bookList.addEventListener("click", function (event) {
     const cancelBtn = document.createElement("button");
     cancelBtn.classList.add("cancel-btn");
     cancelBtn.innerText = "Cancel";
+
+    // validation function for edit fields
+    function validateEditFields() {
+      const titleValid = titleField.value.trim() !== "";
+      const authorValid = authorField.value.trim() !== "";
+
+      saveBtn.disabled = !(titleValid && authorValid);
+    }
 
     li.appendChild(saveBtn);
     li.appendChild(cancelBtn);
