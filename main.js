@@ -184,6 +184,9 @@ bookList.addEventListener("click", function (event) {
     // converts the id to a number
     const id = Number(li.dataset.id);
 
+    // to get hold of the book inside the li element
+    const foundBook = books.find((book) => book.id === id);
+
     const confirmDeleteBtn = document.createElement("button");
     confirmDeleteBtn.classList.add("confirm-delete-button");
     confirmDeleteBtn.innerText = "Confirm";
@@ -191,11 +194,16 @@ bookList.addEventListener("click", function (event) {
     const cancelDeleteBtn = document.createElement("button");
     cancelDeleteBtn.classList.add("cancel-delete-button");
     cancelDeleteBtn.innerText = "Cancel";
+
     // checks if a book is in the proccess to get deleted
     if (deletingBookId !== null) return;
 
     // assigns the id of the book that's getting deleted
     deletingBookId = id;
+
+    li.innerHTML = `Are you sure you want to delete "${foundBook.title}"`;
+    li.appendChild(confirmDeleteBtn);
+    li.appendChild(cancelDeleteBtn);
 
     // filters through the books that do not match the id
     books = books.filter((book) => book.id !== id);
