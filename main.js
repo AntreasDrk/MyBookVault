@@ -204,12 +204,24 @@ bookList.addEventListener("click", function (event) {
     li.innerHTML = `Are you sure you want to delete "${foundBook.title}"`;
     li.appendChild(confirmDeleteBtn);
     li.appendChild(cancelDeleteBtn);
+  } else if (event.target.matches(".confirm-delete-button")) {
+    const li = event.target.closest("li");
+    const id = Number(li.dataset.id);
 
     // filters through the books that do not match the id
     books = books.filter((book) => book.id !== id);
 
     // sents them to localStorage (the updated Array)
     localStorage.setItem("books", JSON.stringify(books));
+
+    // reseting deleteId
+    deletingBookId = null;
+
+    // renders the books
+    displayBooks();
+  } else if (event.target.matches(".confirm-delete-button")) {
+    // reseting deleteId
+    deletingBookId = null;
 
     // renders the books
     displayBooks();
