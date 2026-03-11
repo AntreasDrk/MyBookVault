@@ -176,6 +176,10 @@ searchInput.addEventListener("input", function (event) {
 });
 // ----------------------------------
 
+// !IMPORTANT I NEED TO MAKE IT SO WHEN A BOOK IS DELETED OR BEING EDITED
+// THAT THE USER CAN'T DO BOTH AT THE SAME TIME. EITHER A BOOK IS BEING
+// EDITED OR DETELED, NOT BOTH.
+
 // delete button / edit button
 bookList.addEventListener("click", function (event) {
   if (event.target.matches(".delete-btn")) {
