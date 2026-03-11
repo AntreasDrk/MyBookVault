@@ -269,8 +269,8 @@ bookList.addEventListener("click", function (event) {
     const foundBook = books.find((book) => book.id === id);
 
     // update the values with the new ones
-    foundBook.title = li.querySelector(".title-input").value;
-    foundBook.author = li.querySelector(".author-input").value;
+    foundBook.title = li.querySelector(".title-input").value.trim();
+    foundBook.author = li.querySelector(".author-input").value.trim();
     foundBook.status = li.querySelector(".status-field").value;
 
     // update books
