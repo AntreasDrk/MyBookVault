@@ -184,6 +184,12 @@ bookList.addEventListener("click", function (event) {
     // converts the id to a number
     const id = Number(li.dataset.id);
 
+    // checks if a book is in the proccess to get deleted
+    if (deletingBookId !== null) return;
+
+    // assigns the id of the book that's getting deleted
+    deletingBookId = id;
+
     // filters through the books that do not match the id
     books = books.filter((book) => book.id !== id);
 
