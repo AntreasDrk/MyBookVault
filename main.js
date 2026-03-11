@@ -219,7 +219,7 @@ bookList.addEventListener("click", function (event) {
 
     // renders the books
     displayBooks();
-  } else if (event.target.matches(".confirm-delete-button")) {
+  } else if (event.target.matches(".cancel-delete-button")) {
     // reseting deleteId
     deletingBookId = null;
 
