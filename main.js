@@ -125,6 +125,7 @@ form.addEventListener("submit", function (e) {
   // resets form
   form.reset();
   updateSubmitState();
+  displayBooks();
 });
 
 // ------- SORTING ---------------------------------
