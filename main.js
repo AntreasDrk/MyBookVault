@@ -184,6 +184,13 @@ bookList.addEventListener("click", function (event) {
     // converts the id to a number
     const id = Number(li.dataset.id);
 
+    const confirmDeleteBtn = document.createElement("button");
+    confirmDeleteBtn.classList.add("confirm-delete-button");
+    confirmDeleteBtn.innerText = "Confirm";
+
+    const cancelDeleteBtn = document.createElement("button");
+    cancelDeleteBtn.classList.add("cancel-delete-button");
+    cancelDeleteBtn.innerText = "Cancel";
     // checks if a book is in the proccess to get deleted
     if (deletingBookId !== null) return;
 
