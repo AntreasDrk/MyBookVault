@@ -98,8 +98,8 @@ form.addEventListener("submit", function (e) {
 
   const newBook = {
     id: Date.now(),
-    title: titleInput.value,
-    author: authorInput.value,
+    title: titleInput.value.trim(),
+    author: authorInput.value.trim(),
     status: statusSelect.value,
   };
 
